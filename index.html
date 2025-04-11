@@ -291,6 +291,7 @@
     function showResults() {
       let score = 0;
       let resultHTML = '<h3>Quiz Completed!</h3>';
+	  let msg = `<div id="finalScore">Your Final Score: ${score} / ${quizData.length}</div>`;
       quizData.forEach((q, i) => {
         const isCorrect = q.answer === userAnswers[i];
         if (isCorrect) score++;
@@ -298,8 +299,9 @@
         Your Answer: <span style="color:${isCorrect ? 'green' : 'red'}">${userAnswers[i]}</span><br>
         Correct Answer: ${q.answer}</p>`;
       });
-      resultHTML += `<div id="finalScore">Your Final Score: ${score} / ${quizData.length}</div>`;
-      summaryEl.innerHTML = resultHTML;
+	  msg += resultHTML; 
+      // resultHTML += `<div id="finalScore">Your Final Score: ${score} / ${quizData.length}</div>`;
+      summaryEl.innerHTML = msg;
     }
 
     window.onload = function() {
